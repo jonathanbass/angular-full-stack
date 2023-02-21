@@ -1,14 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { AddMovieComponent } from './components/add-movie/add-movie.component';
+import { MoviesListComponent } from './components/movies-list/movies-list.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MoviesComponent } from './components/movies/movies.component';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MovieDetailsComponent,
+    AddMovieComponent,
+    MoviesListComponent,
+    MoviesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
