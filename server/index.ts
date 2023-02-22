@@ -15,6 +15,11 @@ import { MoviesClient } from "./clients/MoviesClient";
 
     const app = express();
     app.use(express.json());
+    app.use((_, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        next();
+    });
 
     const moviesClient = await MoviesClient.Create();
 
