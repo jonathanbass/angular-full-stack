@@ -8,7 +8,7 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Runtime</mat-label>
-                <input matInput [formControl]="runtime">
+                <input type="number" matInput [formControl]="runtime">
             </mat-form-field>
             <div class="button">
                 <button mat-fab (click)="createMovie($event)">
