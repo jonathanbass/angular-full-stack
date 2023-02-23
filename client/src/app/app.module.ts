@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { MoviesListComponent } from './components/movies-list/movies-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MaterialModule } from './material/material.module';
@@ -25,7 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,14 +18,15 @@ import { MoviesClient } from "./clients/MoviesClient";
     app.use((_, res, next) => {
         res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        res.setHeader('Access-Control-Allow-Headers', 'content-type');
         next();
     });
 
     const moviesClient = await MoviesClient.Create();
 
     app.get("/movies/:id", async (req, res) => {
-        const movies = await moviesClient.GetMovie(req.params.id);
-        res.send(movies);
+        const movie = await moviesClient.GetMovie(req.params.id);
+        res.send(movie);
     });
 
     app.get("/movies", async (_, res) => {
@@ -35,7 +36,7 @@ import { MoviesClient } from "./clients/MoviesClient";
 
     app.post("/movies", async (req, res) => {
         const id = await moviesClient.CreateMovie(req.body);
-        res.send(id);
+        res.send({ id: id });
     });
 
     app.put("/movies/:id", async (req, res) => {

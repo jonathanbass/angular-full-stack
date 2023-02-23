@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IdResponse } from '../models/IdResponse';
 import { Movie } from '../models/movie.model';
 
 const baseUrl = 'http://localhost:3001/movies';
@@ -21,7 +22,7 @@ export class MovieService {
   }
 
   create(data: Movie) {
-    return this.http.post<Movie>(baseUrl, data);
+    return this.http.post<IdResponse>(baseUrl, data);
   }
 
   update(id: string, data: Movie) {

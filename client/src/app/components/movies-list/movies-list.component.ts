@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Movie } from 'src/app/models/movie.model';
 import { MovieDataService } from 'src/app/services/movie.data.service';
 
@@ -8,7 +9,7 @@ import { MovieDataService } from 'src/app/services/movie.data.service';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  movies: Movie[] = [];
+  movies = new MatTableDataSource<Movie>();
   currentMovie: Movie = {};
   currentIndex = -1;
   title = '';
@@ -24,7 +25,7 @@ export class MoviesListComponent implements OnInit {
     this.movieDataService.getAll()
       .subscribe({
         next: (data) => {
-          this.movies = data;
+          this.movies.data = data;
         }
       });
   }
