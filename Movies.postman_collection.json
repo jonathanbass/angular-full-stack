@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "7d4aa6ad-1e18-4b5b-a06c-5506db2d46cd",
+		"name": "Movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "495721"
+	},
+	"item": [
+		{
+			"name": "/movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Star Wars: A New Hope\",\r\n    \"year\": 1977,\r\n    \"runtime\": 120,\r\n    \"genre\": [\"Science Fiction\", \"Fantasy\"],\r\n    \"cast\": [\"Harrison Ford\", \"Mark Hamill\", \"Carrie Fisher\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Star Wars: A New Hope\",\r\n    \"year\": 1977,\r\n    \"runtime\": 120,\r\n    \"genre\": [\r\n        \"Science Fiction\",\r\n        \"Fantasy\"\r\n    ],\r\n    \"cast\": [\r\n        \"Harrison Ford\",\r\n        \"Mark Hamill\",\r\n        \"Carrie Fisher\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/movies/63c5abd5ffab135640154513",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"movies",
+						"63c5abd5ffab135640154513"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/movies/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payloads",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Star Wars: A New Hope\",\r\n    \"year\": 1977,\r\n    \"runtime\": 120,\r\n    \"genre\": [\"Science Fiction\", \"Fantasy\"],\r\n    \"cast\": [\"Harrison Ford\", \"Mark Hamill\", \"Carrie Fisher\"]\r\n}\r\n\r\n{\r\n    \"title\": \"Star Wars: Empire Strikes Back\",\r\n    \"year\": 1980,\r\n    \"runtime\": 126,\r\n    \"genre\": [\"Science Fiction\", \"Fantasy\"],\r\n    \"cast\": [\"Harrison Ford\", \"Mark Hamill\", \"Carrie Fisher\"]\r\n}\r\n\r\n{\r\n    \"title\": \"Star Wars: Return of the Jedi\",\r\n    \"year\": 1983,\r\n    \"runtime\": 125,\r\n    \"genre\": [\"Science Fiction\", \"Fantasy\"],\r\n    \"cast\": [\"Harrison Ford\", \"Mark Hamill\", \"Carrie Fisher\"]\r\n}"
+				}
+			},
+			"response": []
+		}
+	]
+}
