@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Socket } from 'ngx-socket-io';
 import { IMovie } from '../models/movie';
 import { MovieService } from './movie.service';
 
@@ -9,7 +10,7 @@ import { MovieService } from './movie.service';
 export class MovieDataService {
   private _movies = new BehaviorSubject<IMovie[]>([]);
 
-  constructor(private movieService: MovieService) {
+  constructor(private movieService: MovieService, private socket: Socket) {
     this.movieService.getAll()
       .subscribe({
         next: (movies) => {
@@ -18,6 +19,11 @@ export class MovieDataService {
         error: (error) => {
           throw new Error(error.message);
         }
+      });
+
+    this.socket.fromEvent<IMovie[]>('movies-updated')
+      .subscribe({
+        next: (movies) => this._movies.next(movies)
       });
   }
 
@@ -28,14 +34,6 @@ export class MovieDataService {
   delete(id: string) {
     this.movieService.delete(id)
       .subscribe({
-        next: () => {
-          const movies = this._movies.getValue();
-          const filteredMovies = movies.filter((movie) => {
-            return movie._id !== id;
-          });
-
-          this._movies.next(filteredMovies);
-        },
         error: (error) => {
           throw new Error(error.message);
         }
@@ -45,11 +43,6 @@ export class MovieDataService {
   create(movie: IMovie) {
     this.movieService.create(movie)
       .subscribe({
-        next: (response) => {
-          const movies = this._movies.getValue();
-          movies.push({ _id: response.id, ...movie });
-          this._movies.next(movies);
-        },
         error: (error) => {
           throw new Error(error.message);
         }
