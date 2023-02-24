@@ -29,8 +29,11 @@ export class AddMovieComponent {
     }
 
     const newMovie = {
-      title: this.form.get('title')?.value || undefined,
-      runtime: this.form.get('runtime')?.value || undefined
+      title: this.form.get('title')?.value || '',
+      runtime: this.form.get('runtime')?.value || 0,
+      year: 2023,
+      cast: [],
+      genre: []
     };
 
     this.movieDataService.create(newMovie);

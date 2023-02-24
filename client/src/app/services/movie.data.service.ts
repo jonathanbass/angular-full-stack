@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Movie } from '../models/movie.model';
+import { IMovie } from '../models/movie';
 import { MovieService } from './movie.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieDataService {
-  private _movies = new BehaviorSubject<Movie[]>([]);
+  private _movies = new BehaviorSubject<IMovie[]>([]);
 
   constructor(private movieService: MovieService) {
     this.movieService.getAll()
@@ -42,14 +42,8 @@ export class MovieDataService {
       });
   }
 
-  create(movie: Movie) {
-    const movieRequest = {
-      year: 2023,
-      cast: [],
-      genre: [],
-      ...movie
-    }
-    this.movieService.create(movieRequest)
+  create(movie: IMovie) {
+    this.movieService.create(movie)
       .subscribe({
         next: (response) => {
           const movies = this._movies.getValue();

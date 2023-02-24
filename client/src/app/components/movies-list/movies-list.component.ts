@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Movie } from 'src/app/models/movie.model';
+import { IMovie } from 'src/app/models/movie';
 import { MovieDataService } from 'src/app/services/movie.data.service';
 
 @Component({
@@ -9,9 +9,7 @@ import { MovieDataService } from 'src/app/services/movie.data.service';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  movies = new MatTableDataSource<Movie>();
-  currentMovie: Movie = {};
-  currentIndex = -1;
+  movies = new MatTableDataSource<IMovie>();
   title = '';
   displayedColumns = ['id', 'title', 'runtime', 'delete'];
 
@@ -30,10 +28,7 @@ export class MoviesListComponent implements OnInit {
       });
   }
 
-  deleteMovie(movie: Movie, index: number) {
-    this.currentMovie = movie;
-    this.currentIndex = index;
-
+  deleteMovie(movie: IMovie, index: number) {
     if (!movie._id) {
       return;
     }

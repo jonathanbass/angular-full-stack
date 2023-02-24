@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IdResponse } from '../models/IdResponse';
-import { Movie } from '../models/movie.model';
+import { IdResponse } from '../models/id.response';
+import { IMovie } from '../models/movie';
 
 const baseUrl = 'http://localhost:3001/movies';
 
@@ -14,19 +14,19 @@ export class MovieService {
   }
 
   getAll() {
-    return this.http.get<Movie[]>(baseUrl);
+    return this.http.get<IMovie[]>(baseUrl);
   }
 
   get(id: string) {
-    return this.http.get<Movie>(`${baseUrl}/${id}`);
+    return this.http.get<IMovie>(`${baseUrl}/${id}`);
   }
 
-  create(data: Movie) {
+  create(data: IMovie) {
     return this.http.post<IdResponse>(baseUrl, data);
   }
 
-  update(id: string, data: Movie) {
-    return this.http.put<Movie>(`${baseUrl}/${id}`, data);
+  update(id: string, data: IMovie) {
+    return this.http.put<IMovie>(`${baseUrl}/${id}`, data);
   }
 
   delete(id: string) {
