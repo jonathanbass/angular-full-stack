@@ -1,0 +1,8 @@
+<div [ngClass]="{'chip-row': deletable}">
+    <mat-chip-row *ngFor="let item of list" (removed)="remove(item)" [editable]="true">
+        {{item}}
+        <button *ngIf="deletable" matChipRemove>
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </mat-chip-row>
+</div>

@@ -11,11 +11,11 @@ import { MovieDataService } from 'src/app/services/movie.data.service';
 export class MoviesListComponent implements OnInit {
   movies = new MatTableDataSource<IMovie>();
   title = '';
-  displayedColumns = ['id', 'title', 'runtime', 'delete'];
+  displayedColumns = ['id', 'year', 'title', 'runtime', 'cast', 'genre', 'delete'];
 
   constructor(private movieDataService: MovieDataService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getMovies();
   }
 

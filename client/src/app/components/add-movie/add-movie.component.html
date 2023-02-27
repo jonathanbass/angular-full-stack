@@ -4,15 +4,47 @@
             <div>Add Movie</div>
             <mat-form-field appearance="fill">
                 <mat-label>Title</mat-label>
-                <input matInput [formControl]="title">
+                <input matInput [formControl]="title" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Year</mat-label>
+                <input matInput type="number" [formControl]="year" />
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Runtime</mat-label>
-                <input type="number" matInput [formControl]="runtime">
+                <input matInput type="number" [formControl]="runtime" />
             </mat-form-field>
+            <div class="property-list">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Cast</mat-label>
+                        <input matInput [formControl]="cast"/>
+                    </mat-form-field>
+                    <app-movie-property-list [propertyType]="castType" [list]="castValues" [deletable]="true"></app-movie-property-list>
+                </div>
+                <div>
+                    <button class="fab-mini" mat-mini-fab color="accent" (click)="addCast()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="property-list">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Genre</mat-label>
+                        <input matInput [formControl]="genre" />
+                    </mat-form-field>
+                    <app-movie-property-list [propertyType]="genreType" [list]="genreValues" [deletable]="true"></app-movie-property-list>
+                </div>
+                <div>
+                    <button class="fab-mini" mat-mini-fab color="accent" (click)="addGenre()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
             <div class="button">
-                <button mat-fab (click)="createMovie($event)">
-                    <mat-icon>add</mat-icon>
+                <button mat-button color="accent" (click)="createMovie($event)">
+                    <mat-label>Add Movie</mat-label>
                 </button>
             </div>
         </mat-card-content>

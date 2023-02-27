@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MoviePropertyListComponent } from './components/movie-property-list/movie-property-list.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
@@ -20,7 +21,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     MovieDetailsComponent,
     AddMovieComponent,
     MoviesListComponent,
-    MoviesComponent
+    MoviesComponent,
+    MoviePropertyListComponent
   ],
   imports: [
     BrowserModule,

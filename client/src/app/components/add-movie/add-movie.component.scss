@@ -1,8 +1,19 @@
 mat-form-field {
-    margin: 1rem;
+    margin: 0 1rem;
+}
+
+.fab-mini {
+    margin-top: 8px;
 }
 
 div.button {
     display: inline-flex;
     flex-direction: column;
+    margin-left: 1rem;
+    vertical-align: middle;
+    height: 55px;
+}
+
+div.property-list {
+    display: inline-flex;
 }

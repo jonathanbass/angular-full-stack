@@ -10,9 +10,28 @@
             <td mat-cell class="title-cell" *matCellDef="let movie">{{movie.title}}</td>
         </ng-container>
 
+        <ng-container matColumnDef="year">
+            <th mat-header-cell *matHeaderCellDef>Year</th>
+            <td mat-cell class="title-cell" *matCellDef="let movie">{{movie.year}}</td>
+        </ng-container>
+
         <ng-container matColumnDef="runtime">
             <th mat-header-cell *matHeaderCellDef>Duration</th>
             <td mat-cell class="runtime-cell" *matCellDef="let movie">{{movie.runtime}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cast">
+            <th mat-header-cell *matHeaderCellDef>Cast</th>
+            <td mat-cell class="cast-cell" *matCellDef="let movie">
+                <app-movie-property-list [list]="movie.cast"></app-movie-property-list>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="genre">
+            <th mat-header-cell *matHeaderCellDef>Genre</th>
+            <td mat-cell class="cast-cell" *matCellDef="let movie">
+                <app-movie-property-list [list]="movie.genre"></app-movie-property-list>
+            </td>
         </ng-container>
 
         <ng-container matColumnDef="delete">
@@ -27,5 +46,5 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
+    </table>
 </div>
