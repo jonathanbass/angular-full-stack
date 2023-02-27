@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { PropertyType } from 'src/app/models/property.type';
 import { MovieDataService } from 'src/app/services/movie.data.service';
 import { PropertyDataService } from 'src/app/services/property.data.service';

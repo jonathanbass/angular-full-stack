@@ -10,7 +10,6 @@ import { MovieDataService } from 'src/app/services/movie.data.service';
 })
 export class MoviesListComponent implements OnInit {
   movies = new MatTableDataSource<IMovie>();
-  title = '';
   displayedColumns = ['id', 'year', 'title', 'runtime', 'cast', 'genre', 'delete'];
 
   constructor(private movieDataService: MovieDataService) { }
@@ -28,7 +27,7 @@ export class MoviesListComponent implements OnInit {
       });
   }
 
-  deleteMovie(movie: IMovie, index: number) {
+  deleteMovie(movie: IMovie) {
     if (!movie._id) {
       return;
     }
