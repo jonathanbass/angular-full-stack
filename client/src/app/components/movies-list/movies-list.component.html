@@ -36,8 +36,8 @@
 
         <ng-container matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell class="delete-cell" *matCellDef="let movie; let i = index">
-                <button mat-mini-fab color="accent" (click)="deleteMovie(movie, i)">
+            <td mat-cell class="delete-cell" *matCellDef="let movie">
+                <button mat-mini-fab color="accent" (click)="deleteMovie(movie)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </td>

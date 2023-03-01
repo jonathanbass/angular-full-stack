@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { MoviesListComponent } from './components/movies-list/movies-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +17,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
-    MovieDetailsComponent,
     AddMovieComponent,
     MoviesListComponent,
     MoviesComponent,
@@ -35,6 +33,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
     ReactiveFormsModule,
     SocketIoModule.forRoot(config)
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

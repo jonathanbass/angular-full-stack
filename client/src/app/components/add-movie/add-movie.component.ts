@@ -44,6 +44,7 @@ export class AddMovieComponent {
 
   createMovie(event: Event) {
     event.preventDefault();
+    
     if (this.form.invalid) {
       return;
     }
