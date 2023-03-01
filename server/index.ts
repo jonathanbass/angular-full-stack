@@ -3,7 +3,8 @@ import * as dotenv from 'dotenv';
 import * as http from 'http';
 import mongoose from 'mongoose';
 import { Server } from 'socket.io';
-import { MoviesClient } from './clients/MoviesClient';
+import { MoviesController } from './controllers/MoviesController';
+import { IMovie } from './models/IMovie';
 
 (async () => {
     mongoose.set('strictQuery', true);
@@ -29,41 +30,21 @@ import { MoviesClient } from './clients/MoviesClient';
         next();
     });
 
-    const moviesClient = await MoviesClient.Create();
-
-    const emitUpdatedMovies = async () => {
-        const movies = await moviesClient.GetMovies();
+    const emitUpdatedMovies = async (movies: IMovie[]) => {
         io.emit('movies-updated', movies);
     }
 
-    app.get('/movies/:id', async (req, res) => {
-        const movie = await moviesClient.GetMovie(req.params.id);
-        res.send(movie);
-    });
+    const moviesController = await MoviesController.Create(emitUpdatedMovies);
 
-    app.get('/movies', async (_, res) => {
-        const movies = await moviesClient.GetMovies();
-        res.send(movies);
-    });
+    app.get('/movies/:id', moviesController.getMovie);
 
-    app.post('/movies', async (req, res) => {
-        const id = await moviesClient.CreateMovie(req.body);
-        res.send({ id: id });
-        emitUpdatedMovies();
-    });
+    app.get('/movies', moviesController.getMovies);
 
-    app.put('/movies/:id', async (req, res) => {
-        console.log(req.body);
-        await moviesClient.UpdateMovie(req.params.id, req.body);
-        res.send();
-        emitUpdatedMovies();
-    });
+    app.post('/movies', moviesController.createMovie);
 
-    app.delete('/movies/:id', async (req, res) => {
-        const id = await moviesClient.DeleteMovie(req.params.id);
-        res.send();
-        emitUpdatedMovies();
-    });
+    app.put('/movies/:id', moviesController.updateMovie);
+
+    app.delete('/movies/:id', moviesController.deleteMovie);
 
     const port = process.env.PORT || 3001;
 

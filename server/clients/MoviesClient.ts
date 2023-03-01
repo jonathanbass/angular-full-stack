@@ -1,14 +1,14 @@
 import Movie, { IMovie, MovieModel } from "../models/IMovie";
 
 export class MoviesClient {
-    private constructor () {
-        
+    private constructor() {
+
     }
 
-    public static Create = async () => {
+    public static Create = () => {
         const instance = new MoviesClient();
         return instance;
-     };
+    };
 
     GetMovie = async (id: string) => {
         return await Movie.findById(id).select('-__v');
@@ -26,12 +26,11 @@ export class MoviesClient {
     }
 
     UpdateMovie = async (id: string, updatedMovie: IMovie) => {
-        await Movie.findByIdAndUpdate(
-            id, updatedMovie
-        );
+        await Movie.findByIdAndUpdate(id, updatedMovie);
     }
 
     DeleteMovie = async (id: string) => {
-        await Movie.findByIdAndDelete(id);
+        const movie = await Movie.findByIdAndDelete(id);
+        return movie?.id;
     }
 }
