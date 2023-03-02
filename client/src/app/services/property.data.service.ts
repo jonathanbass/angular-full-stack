@@ -27,8 +27,8 @@ export class PropertyDataService {
     const index = cast.findIndex(c => c === castMember);
     cast.splice(index, 1);
     this._cast.next(cast);
-    console.log(cast);
   }
+
   deleteAllCast() {
     this._cast.next([]);
   }
@@ -44,7 +44,6 @@ export class PropertyDataService {
     const index = genres.findIndex(c => c === genre);
     genres.splice(index, 1);
     this._genre.next(genres);
-    console.log(genres);
   }
 
   deleteAllGenre() {

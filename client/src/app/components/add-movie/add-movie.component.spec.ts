@@ -53,8 +53,8 @@ describe('AddMovieComponent', () => {
 
   describe('when the form is VALID and we click to create a movie', () => {
     beforeEach(() => {
-      fixture.componentInstance.title?.setValue('test movie');
-      fixture.componentInstance.createMovie(new Event('click'));
+      component.title?.setValue('test movie');
+      component.createMovie(new Event('click'));
     });
     
     it('should create the movie', () => {
@@ -72,8 +72,8 @@ describe('AddMovieComponent', () => {
 
   describe('when the form is INVALID and we click to create a movie', () => {
     beforeEach(() => {
-      fixture.componentInstance.title?.setValue(null);
-      fixture.componentInstance.createMovie(new Event('click'));
+      component.title?.setValue(null);
+      component.createMovie(new Event('click'));
     });
     
     it('should NOT create the movie', () => {
@@ -91,32 +91,32 @@ describe('AddMovieComponent', () => {
 
   describe('when the cast member is entered and we click to add', () => {
     it('should add the new cast member', () => {
-      fixture.componentInstance.cast?.setValue('Kanye Test');
-      fixture.componentInstance.addCast();
+      component.cast?.setValue('Kanye Test');
+      component.addCast();
       expect(propertyDataServiceSpy.addCast.calls.count()).toBe(1);
     });
   });
 
   describe('when the cast member is empty and we click to add', () => {
     it('should NOT add the new cast member', () => {
-      fixture.componentInstance.cast?.setValue(null);
-      fixture.componentInstance.addCast();
+      component.cast?.setValue(null);
+      component.addCast();
       expect(propertyDataServiceSpy.addCast.calls.count()).toBe(0);
     });
   });
 
   describe('when a new genre is entered and we click to add', () => {
     it('should add the new genre', () => {
-      fixture.componentInstance.genre?.setValue('Test Documentaries');
-      fixture.componentInstance.addGenre();
+      component.genre?.setValue('Test Documentaries');
+      component.addGenre();
       expect(propertyDataServiceSpy.addGenre.calls.count()).toBe(1);
     });
   });
 
   describe('when genre is empty and we click to add', () => {
     it('should NOT add the new genre', () => {
-      fixture.componentInstance.genre?.setValue(null);
-      fixture.componentInstance.addGenre();
+      component.genre?.setValue(null);
+      component.addGenre();
       expect(propertyDataServiceSpy.addGenre.calls.count()).toBe(0);
     });
   });
